@@ -1,26 +1,41 @@
 # 🛡️ SportShield AI
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=FFD43B" alt="Python">
-  <img src="https://img.shields.io/badge/FastAPI-0.109-009974?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
-  <img src="https://img.shields.io/badge/Streamlit-1.30-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
-  <img src="https://img.shields.io/badge/CLIP-OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white" alt="CLIP">
-</p>
+**AI-powered Digital Asset Protection for Sports Media**
 
-> **Detect unauthorized sports media usage across the internet using AI-powered image similarity, geo-tracking, and explainability.**
+SportShield AI detects unauthorized usage of sports images and videos across the internet using computer vision, geo-tracking, and explainable AI.
 
 ---
 
-## 🚀 Features
+## 🚨 The Problem
 
-| Feature | Description |
-|---------|-------------|
-| 🖼️ **AI Image Matching** | CLIP-powered semantic similarity for accurate image detection |
-| 🌍 **Geo Tracking** | IP-based location tracking to identify content sources globally |
-| 🧠 **Explainability Engine** | OpenCV ORB feature matching with visual highlighting |
-| ⚡ **Real-time Detection** | Live threat feed with instant alerts |
-| 🎯 **Tampering Detection** | Identifies cropped/resized/unauthorized modifications |
-| 📊 **Spread Narrative** | Track content distribution across countries |
+Sports organizations generate massive volumes of high-value media that spread rapidly across global platforms. This creates a visibility gap, making it nearly impossible to track unauthorized usage and protect intellectual property.
+
+---
+
+## 💡 Our Solution
+
+SportShield AI uses:
+
+* 🧠 AI-powered visual fingerprinting (CLIP embeddings)
+* 🌍 Geo-tracking to identify where content spreads globally
+* 🔍 Web intelligence via Tavily API
+* 🧩 Explainability engine to show *why* content was flagged
+
+---
+
+## ⚡ Key Features
+
+* 📤 Media Upload & Fingerprinting
+* 🌐 Web Search & Detection
+* 🧠 Explainable AI (Visual Matching)
+* 🌍 Geo Tracking (Global Spread Analysis)
+* 🚨 Confidence-Based Violation Detection
+
+---
+
+## 🧠 What Makes It Unique
+
+Unlike traditional systems, SportShield AI doesn't just detect misuse—it explains it and tracks its global spread in real-time.
 
 ---
 
