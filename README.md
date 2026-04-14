@@ -1,154 +1,204 @@
-# SportShield AI
+# 🛡️ SportShield AI
 
-AI-Powered Sports Media Detection & Tracking System
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=FFD43B" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-0.109-009974?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Streamlit-1.30-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/CLIP-OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white" alt="CLIP">
+</p>
 
-## Overview
+> **Detect unauthorized sports media usage across the internet using AI-powered image similarity, geo-tracking, and explainability.**
 
-SportShield AI detects unauthorized usage of sports media across the internet using:
-- **CLIP** for AI-powered image similarity matching
-- **Tavily API** for web search
-- **Geo-tracking** with IPinfo to locate content sources
-- **Explainability** using OpenCV ORB feature matching
+---
 
-## Tech Stack
+## 🚀 Features
 
-- **Backend**: FastAPI (Python)
-- **Frontend**: Streamlit
-- **AI Models**: CLIP (transformers)
-- **Computer Vision**: OpenCV
-- **Visualization**: Plotly, PyDeck
+| Feature | Description |
+|---------|-------------|
+| 🖼️ **AI Image Matching** | CLIP-powered semantic similarity for accurate image detection |
+| 🌍 **Geo Tracking** | IP-based location tracking to identify content sources globally |
+| 🧠 **Explainability Engine** | OpenCV ORB feature matching with visual highlighting |
+| ⚡ **Real-time Detection** | Live threat feed with instant alerts |
+| 🎯 **Tampering Detection** | Identifies cropped/resized/unauthorized modifications |
+| 📊 **Spread Narrative** | Track content distribution across countries |
 
-## Project Structure
+---
+
+## 🏗️ Architecture
 
 ```
-Cepheus 2.0 2026/
+┌─────────────────────────────────────────────────────────────────┐
+│                        SportShield AI                            │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐ │
+│  │   Upload   │───▶│    CLIP     │───▶│    FAISS    │ │
+│  │   Image   │    │  Embedding  │    │    Index   │ │
+│  └──────────────┘    └──────────────┘    └──────────────┘ │
+│         │                   │                               │
+│         ▼                   ▼                               │
+│  ┌──────────────┐    ┌──────────────┐                    │
+│  │   Tavily API  │───▶│ Geo Tracking │───▶│  IPInfo API  │ │
+│  │   Web Search │    │  (IP/URL)     │    │   Location  │ │
+│  └──────────────┘    └──────────────┘    └──────────────┘ │
+│         │                                                   │
+│         ▼                                                   │
+│  ┌──────────────┐                                           │
+│  │  Explainable│───▶│  ORB Feature │───▶│   Visual    │ │
+│  │   Match     │    │   Matching   │    │  Highlights │ │
+│  └──────────────┘    └──────────────┘    └──────────────┘ │
+│                                                               │
+│  ┌────────────────────────────────────────────────��──┐       │
+│  │              Streamlit Dashboard                 │       │
+│  │   🔴 Live Threat Feed  │  🗺️ Geo Map  │  📈 Stats  │       │
+│  └───────────────────────────────────────────────────┘       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 Project Structure
+
+```
+SportShield AI/
 ├── backend/
 │   ├── core/
-│   │   └── config.py          # Configuration and paths
+│   │   └── config.py           ⚙️  Configuration & paths
 │   ├── models/
-│   │   └── schemas.py        # Pydantic models
+│   │   └── schemas.py         📝  Pydantic models
 │   ├── routes/
-│   │   ├── upload.py        # Image upload endpoints
-│   │   └── detection.py     # Detection endpoints
+│   │   ├── upload.py          📤  Image upload endpoints
+│   │   └── detection.py      🔍  Detection endpoints
 │   ├── services/
-│   │   ├── clip_service.py         # CLIP embedding generation
-│   │   ├── search_service.py      # Web search via Tavily
-│   │   ├── geo_service.py         # IP geo-tracking
-│   │   ├── explainability_service.py  # Feature matching
-│   │   └── detection_service.py  # Main detection logic
-│   └── main.py              # FastAPI application
+│   │   ├── clip_service.py        🧠  CLIP embedding generation
+│   │   ├── search_service.py      🌐  Tavily web search
+│   │   ├── geo_service.py       🌍  IPinfo geo-tracking
+│   │   ├── explainability_service.py  🔥  ORB feature matching
+│   │   └── detection_service.py    ⚡  Detection orchestration
+│   └── main.py                 🚀  FastAPI application
 ├── frontend/
-│   └── app.py              # Streamlit dashboard
+│   └── app.py                 💻  Streamlit dashboard
 ├── data/
-│   ├── uploads/            # Uploaded images
-│   ├── embeddings/         # Generated embeddings
-│   └── results/            # Detection results
-├── requirements.txt
-└── README.md
+│   ├── uploads/               📁  Uploaded images
+│   ├── embeddings/            💾  CLIP embeddings
+│   └── results/               📊  Detection results
+├── requirements.txt           📦  Python dependencies
+├── .env.example              🔐  API keys template
+└── README.md                 📖  This file
 ```
 
-## Setup Instructions
+---
 
-### 1. Prerequisites
-
-- Python 3.9+
-- OpenAI API key (for CLIP)
-- Tavily API key (for web search)
-- IPinfo API key (for geo-tracking)
-
-### 2. Environment Setup
-
-Create a `.env` file in the project root:
-
-```env
-# API Keys (get from https://platform.openai.com, https://tavily.com, https://ipinfo.io)
-TAVILY_API_KEY=your_tavily_api_key
-IPINFO_API_KEY=your_ipinfo_api_key
-
-# Optional: Set environment for transformers cache
-HF_HOME=/path/to/huggingface/cache
-TRANSFORMERS_CACHE=/path/to/transformers/cache
-```
-
-### 3. Install Dependencies
+## ⚡ Quick Start
 
 ```bash
+# 1. Install dependencies
 pip install -r requirements.txt
-```
 
-**Note**: For FAISS support, you may need to install separately:
-```bash
-pip install faiss-cpu
-```
+# 2. Configure API keys
+cp .env.example .env
+# Edit .env with your TAVILY_API_KEY and IPINFO_API_KEY
 
-### 4. Run the Backend
+# 3. Run Backend (Terminal 1)
+uvicorn backend.main:app --reload --port 8000
 
-```bash
-# Start FastAPI server
-cd backend
-python main.py
-```
-
-The API will be available at `http://localhost:8000`
-
-API Documentation: `http://localhost:8000/docs`
-
-### 5. Run the Frontend
-
-```bash
-# In a new terminal
+# 4. Run Frontend (Terminal 2)
 streamlit run frontend/app.py
 ```
 
-The dashboard will open at `http://localhost:8500`
+**Access Points:**
+- 🌐 API: `http://localhost:8000`
+- 📚 Swagger UI: `http://localhost:8000/docs`
+- 🎨 Dashboard: `http://localhost:8500`
 
-## API Endpoints
+---
 
-### Upload
-- `POST /upload/` - Upload an image
-- `GET /upload/list` - List uploaded images
-- `DELETE /upload/{image_id}` - Delete an image
+## 🔧 API Endpoints
 
-### Detection
-- `POST /detect/` - Detect similar images
-- `GET /detect/results/{image_id}` - Get detection results
-- `GET /detect/health` - Health check
+### 📤 Upload
+```bash
+POST /upload/                  # Upload image & generate embedding
+GET  /upload/list              # List all uploaded images
+DELETE /upload/{image_id}      # Delete image
+```
 
-### Main
-- `GET /` - Root endpoint
-- `GET /health` - Health check
+### 🔍 Detection
+```bash
+POST /detect/                  # Find similar images
+GET  /detect/results/{id}     # Get detection results
+GET  /detect/health           # Health check
+```
 
-## Usage Example
+---
 
-1. **Upload an image** via the dashboard or API:
-   ```bash
-   curl -X POST -F "file=@image.jpg" http://localhost:8000/upload/
-   ```
-
-2. **Detect matches**:
-   ```bash
-   curl -X POST "http://localhost:8000/detect/?image_id=img_abc123&search_keyword=NBA%20game&top_k=5"
-   ```
-
-3. **View results** in the dashboard at `http://localhost:8500`
-
-## Confidence Labels
+## 🧠 Confidence Intelligence
 
 | Similarity | Keypoints | Label |
-|------------|----------|-------|
-| >85% | >10 | High |
-| 60-85% | >5 | Medium |
-| <60% | any | Low |
+|-----------|-----------|-------|
+| >85% | >10 | 🔴 **High** 🚨 |
+| 60-85% | >5 | 🟡 **Medium** ⚠️ |
+| <60% | any | 🟢 **Low** ℹ️ |
 
-## Features
+---
 
-1. **Media Upload**: Upload images, generate CLIP embeddings
-2. **Web Search**: Search for similar images using Tavily API
-3. **Image Matching**: Cosine similarity with CLIP embeddings
-4. **Geo Tracking**: Extract location from source domains
-5. **Explainability**: Highlight matching regions with ORB
-6. **Dashboard**: Streamlit UI with maps and visualizations
+## 🖥️ Usage Examples
 
-## License
+### Upload an Image
+```bash
+curl -X POST -F "file=@game_highlight.jpg" http://localhost:8000/upload/
+```
 
-MIT License
+### Detect Unauthorized Usage
+```bash
+curl -X POST "http://localhost:8000/detect/?image_id=img_abc123&search_keyword=NBA&top_k=5"
+```
+
+### Dashboard Workflow
+1. Navigate to **Live Threat Feed**
+2. Enter your Image ID
+3. Set search keyword (e.g., "NBA game")
+4. Click **🔍 Scan for Threats**
+5. View real-time alerts with geo-map
+
+---
+
+## 🔐 API Keys
+
+Get free API keys from:
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **Tavily** | https://tavily.com | Web image search |
+| **IPinfo** | https://ipinfo.io | Geo-location tracking |
+
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology |
+|-------|------------|
+| **Backend** | FastAPI, Uvicorn |
+| **Frontend** | Streamlit |
+| **AI/ML** | CLIP (OpenAI), OpenCV |
+| **Search** | Tavily API |
+| **Storage** | FAISS, NumPy |
+| **Visualization** | Plotly, PyDeck |
+
+</div>
+
+---
+
+## 📄 License
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License">
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <strong>🛡️ SportShield AI</strong> — Protecting sports media worldwide
+</p>
