@@ -1,0 +1,16 @@
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+pydantic==2.5.3
+requests==2.31.0
+numpy==1.26.3
+opencv-python==4.9.0.80
+Pillow==10.2.0
+torch==2.1.2
+transformers==4.36.2
+streamlit==1.30.0
+pandas==2.2.0
+plotly==5.19.0
+pydeck==0.8.1b0
+scikit-learn==1.4.0
+faiss-cpu==1.7.4
